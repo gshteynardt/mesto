@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./pages/index.css" />
+</head>
+
+<body class="page">
+  <!--block header starts here-->
+  <header class="header page__header">
+    <picture class="logo header__logo">
+      <img class="logo__img" src="/images/logo_mesto.svg" alt="" />
+    </picture>
+  </header>
+
+  <main class="page__content">
+    <!--block profile starts here-->
+    <section class="profile page__profile">
+      <div class="profile__info">
+        <img src="./images/profile_avatar .jpg" alt="фотография пользователя" class="profile__avatar" />
+        <div class="profile__container">
+          <h2 class="profile__name">Жак-Ив Кусто</h2>
+          <p class="profile__job">Исследователь океана</p>
+          <button type="button" class="button button_edit opacity"></button>
+        </div>
+      </div>
+      <button type="button" class="button button_add opacity"></button>
+    </section>
+    <!--block elements starts here-->
+    <section class="elements">
+      <ul class="elements__items">
+        <li class="elements__item">
+          <img src="./images/element_karachaevsk.jpg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element_elbrus.jpg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Гора Эльбрус</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element_dombay.jpg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Домбай</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element_saint.jpeg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Санкт-Петербург</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images/element_petra.jpeg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Петра</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+        <li class="elements__item">
+          <img src="./images//element_simoni.jpg" alt="здесь должна быть картинка" class="element__img" />
+          <div class="element__wrap">
+            <h2 class="element__title">Шамони-Мон-Блан</h2>
+            <button class="button button_heart"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <!--block footer starts here-->
+  <footer class="footer page__footer">
+    <h2 class="footer__title">&COPY; 2020 Mesto Russia</h2>
+  </footer>
+  <!--blocks pop-up starts here-->
+  <section class="popup">
+    <div class="popup__container">
+      <button type="button" class="button popup__close opacity"></button>
+      <form class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <div class="popup__fields">
+          <input type="text" class="popup__input popup__input_type_name" name="name" value="type here">
+          <input type="text" class="popup__input popup__input_type_job" name="job" value="type here">
+          <button type="submit" class="button button_submit">
+            Сохранить
+          </button>
+        </div>
+      </form>
+  </section>
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>

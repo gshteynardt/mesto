@@ -1,0 +1,11 @@
+.button_heart {
+  width: 21px;
+  height: 18px;
+  background-image: url(../../../images/button_heart.svg);
+  flex-shrink: 0;
+}
+
+.button_heart:hover {
+  transform: scale(1.2);
+  transition: transform linear .3s;
+}
