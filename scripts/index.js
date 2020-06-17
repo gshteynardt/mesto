@@ -35,5 +35,5 @@ function formSubmitHandler(evt) {
 
 profileEdit.addEventListener('click', popupOpened);
 popupClose.addEventListener('click', popupToggle);
-formElement.addEventListener('submit', formSubmitHadler);
+formElement.addEventListener('submit', formSubmitHandler);
 popup.addEventListener('click', closePopupByClickingOverlay);
