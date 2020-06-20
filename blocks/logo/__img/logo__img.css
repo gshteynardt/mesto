@@ -2,3 +2,16 @@
 .logo__img {
   margin: 0 0 40px;
 }
+
+@media screen and (max-width: 480px){
+.logo__img {
+  margin: 0 0 31px 27px;
+}
+}
+
+@media screen and (max-width: 320px){
+  .logo__img {
+    width: 103px;
+    height: 24px;
+  }
+  }

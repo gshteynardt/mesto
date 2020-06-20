@@ -9,8 +9,8 @@
   position: relative;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 540px) {
   .popup__container {
-   width: calc(100% - 62px);
+   width: calc(100% - 90px);
   }
 }

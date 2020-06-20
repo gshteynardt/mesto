@@ -8,3 +8,9 @@
   background-position: center;
 }
 
+@media screen and (max-width: 320px) {
+  .button_edit {
+    width: 18px;
+    height: 18px;
+  }
+}
