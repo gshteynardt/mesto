@@ -1,6 +1,7 @@
 @import url(./__content/page__content.css);
 @import url(./__header/page__header.css);
 @import url(./__profile/page__profile.css);
+@import url(./__footer/page__footer.css);
 
 
 .page {
