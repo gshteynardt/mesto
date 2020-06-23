@@ -3,5 +3,7 @@
 .header {
   font-family: 'Inter', Arial, sans-serif;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  /* добрый вечер! я прошу прощения, я где-то в git допустил ошибку и у меня не запушились изменения в предыдущей итерации. */
+  box-sizing: border-box;
 }
 
