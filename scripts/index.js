@@ -5,27 +5,30 @@ const profileEdit = document.querySelector('.button_edit');
 const cardAdd = document.querySelector('.button_add');
 //this variables for popup block
 const popup = document.querySelector('.popup');
-const popupClose = popup.querySelector('.popup__close');
 //this variables for popup_theme_profile
-const popupEditProfile = popup.querySelector('.popup_theme_profile');
+const popupEditProfile = document.querySelector('.popup_theme_profile');
 const formProfile = popup.querySelector('.popup__content_theme_profile');
+const popupCloseForProfile = popupEditProfile.querySelector('.popup__close');
 const nameInput = popup.querySelector('.popup__input_type_name');
 const jobInput = popup.querySelector('.popup__input_type_job');
 //this variables for popup_theme_elements
 const popupAddCard = document.querySelector('.popup_theme_elements');
 const formElement = popupAddCard.querySelector('.popup__content_theme_elements');
+const placeInput = popupAddCard.querySelector('.popup__input_type_place');
+const linkInput = popupAddCard.querySelector('.popup__input_type_link');
+const popupCloseForCard = popupAddCard.querySelector('.popup__close');
+//this variables for popup_theme_image
+const popupImg = document.querySelector('.popup_theme_image');
+const imgPopup = popupImg.querySelector('.popup__img');
+const captionPopup = popupImg.querySelector('.popup__caption');
+const popupCloseForImg = popupImg.querySelector('.popup__close');
 //this variables for template elements
 const elementsTemplate = document.querySelector('.template-element')
-
 //this variables for elements
 const elements = document.querySelector('.elements');
 const itemsElements = elements.querySelector('.elements__items');
-//this variables for popup_theme_elements
-const placeInput = popupAddCard.querySelector('.popup__input_type_place');
-const linkInput = popupAddCard.querySelector('.popup__input_type_link');
 
-let  containsClass = document.querySelector('.popup_opened');
-
+console.log(popupCloseForImg.parentElement.parentElement)
 //функция добавления карточек
 function addCard(card) {
   const cardTemplate = elementsTemplate.content;
@@ -46,6 +49,14 @@ function addCard(card) {
     evt.target.classList.toggle('button__like_active'));
   //удаление элемента
   btnDelete.addEventListener('click', deleteCard);
+  //обработчик клика по картинке
+  imgCard.addEventListener('click', evt => {
+    evt.target.closest('.elements__img');
+    imgPopup.src = card.link;
+    imgPopup.alt = card.name;
+    captionPopup.textContent = card.name;
+    togglePopup(popupImg)
+  });
 
   itemsElements.prepend(cardElements);
 }
@@ -68,11 +79,11 @@ function deleteCard(evt) {
 function popupEditProfileShow() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  togglePopup(popup);
+  togglePopup(popupEditProfile);
 }
 
 //открытие popup addCard
-function popupAddCardShow(){
+function popupAddCardShow() {
   togglePopup(popupAddCard);
 }
 
@@ -84,14 +95,12 @@ function closePopupByClickingOverlay(evt) {
   togglePopup(popup);
 }
 
-
 //обработчик profile form
 function profileFormSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   togglePopup(popupEditProfile)
-  //popup.classList.toggle('popup_opened');
 }
 
 //обработчик card form
@@ -109,16 +118,10 @@ function cardFormSubmitHandler(evt) {
 }
 
 profileEdit.addEventListener('click', popupEditProfileShow);
-
-popupClose.addEventListener('click', function(evt){
-  const popupItem = evt.target.closest('.popup_opened')
-  console.log(popupItem)
-  if (popupItem) {
-    togglePopup(popup)
-  }
-});
-
 cardAdd.addEventListener('click', popupAddCardShow);
+popupCloseForCard.addEventListener('click', () => togglePopup(popupAddCard));
+popupCloseForProfile.addEventListener('click', () => togglePopup(popupEditProfile));
+popupCloseForImg.addEventListener('click', () => togglePopup(popupImg));
 formProfile.addEventListener('submit', profileFormSubmitHandler);
 formElement.addEventListener('submit', cardFormSubmitHandler);
 popup.addEventListener('click', closePopupByClickingOverlay);
