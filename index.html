@@ -32,48 +32,7 @@
     <!--block elements starts here-->
     <section class="elements">
       <ul class="elements__items">
-        <li class="elements__item">
-          <img src="./images/element_karachaevsk.jpg" alt="старинная крепость на фоне горы с лесом" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element_elbrus.jpg" alt="гора на фоне заката" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element_dombay.jpg" alt="кромка леса на фоне горы" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Домбай</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element_saint.jpeg" alt="вид сверху на Санкт-Петербург" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Санкт-Петербург</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images/element_petra.jpeg" alt="изображение Храма в горе" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Петра</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
-        <li class="elements__item">
-          <img src="./images//element_simoni.jpg" alt="вид сверху на горы со снежным покровом" class="element__img" />
-          <div class="element__wrap">
-            <h2 class="element__title">Шамони-Мон-Блан</h2>
-            <button type="button" class="button button_heart"></button>
-          </div>
-        </li>
+      
       </ul>
     </section>
   </main>
@@ -81,23 +40,54 @@
   <footer class="footer page__footer">
     <p class="footer__copy">&COPY; 2020 Mesto Russia</p>
   </footer>
-  <!--blocks pop-up starts here-->
-  <section class="popup">
+  <!--blocks popup_theme_profile starts here-->
+  <section class="popup popup_theme_profile">
     <div class="popup__container">
       <button type="button" class="button popup__close">
-        <!-- <img class="popup__close" src="./images/button_close.svg" alt=""> -->
       </button>
-      <form class="popup__content">
+      <form class="popup__content popup__content_theme_profile">
         <h2 class="popup__title">Редактировать профиль</h2>
         <div class="popup__fields">
-          <input type="text" class="popup__input popup__input_type_name" name="name" value="type here">
-          <input type="text" class="popup__input popup__input_type_job" name="job" value="type here">
+          <input type="text" class="popup__input popup__input_type_name" name="name" value="type here" required>
+          <input type="text" class="popup__input popup__input_type_job" name="job" value="type here" required>
           <button type="submit" class="button button_submit">
             Сохранить
           </button>
         </div>
       </form>
+    </div>
   </section>
+  <!--blocks popup_theme_elements starts here-->
+  <section class="popup popup_theme_elements">
+    <div class="popup__container">
+      <button type="button" class="button popup__close">
+      </button>
+      <form class="popup__content popup__content_theme_elements">
+        <h2 class="popup__title">Новое место</h2>
+        <div class="popup__fields">
+          <input type="text" class="popup__input popup__input_type_place" name="name" value="" required placeholder="Название">
+          <input type="text" class="popup__input popup__input_type_link" name="job" value="" required placeholder="Ссылка на картинку">
+          <button type="submit" class="button button_submit">
+            Создать
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!--block template starts here-->
+  <template class="template-element">
+    <li class="elements__item">
+      <button type="button" class="button button_delete">
+        <svg width="18" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.458 18.142c.06.67.61 1.158 1.28 1.158H14.26c.67 0 1.22-.508 1.28-1.158L16.72 5.79H1.28l1.178 12.352zM16.72 1.93h-5.14v-.65C11.58.569 11.011 0 10.3 0H7.72C7.01 0 6.44.569 6.44 1.28v.65H1.28C.569 1.93 0 2.499 0 3.21c0 .711.569 1.28 1.28 1.28h15.44c.711 0 1.28-.569 1.28-1.28 0-.711-.569-1.28-1.28-1.28z" fill="#fff"/></svg>
+      </button>
+      <img src="#" alt="изображение места" class="elements__img">
+      <div class="elements__wrap">
+        <h2 class="elements__title"></h2>
+        <button type="button" class="button button__like"></button>
+      </div>
+    </li>
+  </template>
+  <script src="./scripts/utils.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 

@@ -1,11 +1,12 @@
-.button_heart {
+.button__like {
   width: 21px;
   height: 18px;
-  background-image: url(../../../images/button_heart.svg);
+  background: url(../../../images/button_heart.svg) center no-repeat;
   flex-shrink: 0;
 }
 
-.button_heart:hover {
+.button__like:hover {
   transform: scale(1.2);
   transition: transform linear .3s;
 }
+
