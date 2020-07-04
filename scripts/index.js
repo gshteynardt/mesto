@@ -23,15 +23,14 @@ const imgPopup = popupImg.querySelector('.popup__img');
 const captionPopup = popupImg.querySelector('.popup__caption');
 const popupCloseForImg = popupImg.querySelector('.popup__close');
 //this variables for template elements
-const elementsTemplate = document.querySelector('.template-element')
+const elementsTemplate = document.querySelector('.template-element');
+const cardTemplate = elementsTemplate.content;
 //this variables for elements
 const elements = document.querySelector('.elements');
 const itemsElements = elements.querySelector('.elements__items');
 
-console.log(popupCloseForImg.parentElement.parentElement)
-//функция добавления карточек
-function addCard(card) {
-  const cardTemplate = elementsTemplate.content;
+
+function cloneCard(card){
   const cardElements = cardTemplate.cloneNode(true);
 
   const imgCard =  cardElements.querySelector('.elements__img');
@@ -58,11 +57,19 @@ function addCard(card) {
     togglePopup(popupImg)
   });
 
-  itemsElements.prepend(cardElements);
+  return cardElements;
+}
+
+//функция добавления карточек
+function addCard(card, container) {
+  container.prepend(card);
 }
 
 //функция рендеринга карточек при загрузке
-initialCards.forEach(card => addCard(card));
+initialCards.forEach(function (item) {
+  let card = cloneCard(item);
+  addCard(card, itemsElements);
+});
 
 //добавление удаление класса 'popup_opened'
 function togglePopup(popup){
@@ -87,14 +94,6 @@ function popupAddCardShow() {
   togglePopup(popupAddCard);
 }
 
-//закрытие popup по клику на overlay
-function closePopupByClickingOverlay(evt) {
-  if (evt.target !== evt.currentTarget) {
-    return
-  }
-  togglePopup(popup);
-}
-
 //обработчик profile form
 function profileFormSubmitHandler(evt) {
   evt.preventDefault();
@@ -112,7 +111,8 @@ function cardFormSubmitHandler(evt) {
     name,
     link,
   }
-  addCard(cardItem)
+  let card = cloneCard(cardItem)
+  addCard(card, itemsElements)
   togglePopup(popupAddCard)
   formElement.reset()
 }
@@ -124,4 +124,3 @@ popupCloseForProfile.addEventListener('click', () => togglePopup(popupEditProfil
 popupCloseForImg.addEventListener('click', () => togglePopup(popupImg));
 formProfile.addEventListener('submit', profileFormSubmitHandler);
 formElement.addEventListener('submit', cardFormSubmitHandler);
-popup.addEventListener('click', closePopupByClickingOverlay);

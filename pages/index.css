@@ -7,7 +7,7 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/__like/button__like.css);
-@import "../blocks/button/__like/_active/button__like_active.css";
+@import url(../blocks/button/__like/_active/button__like_active.css);
 @import url(../blocks/button/_edit/button_edit.css);
 @import url(../blocks/button/_add/button_add.css);
 @import url(../blocks/button/_submit/button_submit.css);
