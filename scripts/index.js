@@ -29,10 +29,9 @@ const cardTemplate = elementsTemplate.content;
 const elements = document.querySelector('.elements');
 const itemsElements = elements.querySelector('.elements__items');
 
-
-function cloneCard(card){
+//Подскажите пожалуйста, "сгруппировать объявления переменных, объявления функций, вызовы функций." - это нужно сделать во всем коде? или внутри функций? переменные я объявил вначале кода, потом идут функции, потом обработчики. подскажите пожалуйста, как правильно сделать
+function createCard(card){
   const cardElements = cardTemplate.cloneNode(true);
-
   const imgCard =  cardElements.querySelector('.elements__img');
   const titleCard = cardElements.querySelector('.elements__title');
   const btnLike = cardElements.querySelector('.button__like');
@@ -54,9 +53,8 @@ function cloneCard(card){
     imgPopup.src = card.link;
     imgPopup.alt = card.name;
     captionPopup.textContent = card.name;
-    togglePopup(popupImg)
+    togglePopup(popupImg);
   });
-
   return cardElements;
 }
 
@@ -67,7 +65,7 @@ function addCard(card, container) {
 
 //функция рендеринга карточек при загрузке
 initialCards.forEach(function (item) {
-  let card = cloneCard(item);
+  const card = createCard(item);
   addCard(card, itemsElements);
 });
 
@@ -105,17 +103,18 @@ function profileFormSubmitHandler(evt) {
 //обработчик card form
 function cardFormSubmitHandler(evt) {
   evt.preventDefault();
-  let name = placeInput.value;
-  let link = linkInput.value;
-  let cardItem = {
+  const name = placeInput.value;
+  const link = linkInput.value;
+  const cardItem = {
     name,
     link,
   }
-  let card = cloneCard(cardItem)
+  const card = createCard(cardItem);
   addCard(card, itemsElements)
   togglePopup(popupAddCard)
   formElement.reset()
 }
+
 
 profileEdit.addEventListener('click', popupEditProfileShow);
 cardAdd.addEventListener('click', popupAddCardShow);
