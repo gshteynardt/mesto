@@ -29,7 +29,6 @@ const cardTemplate = elementsTemplate.content;
 const elements = document.querySelector('.elements');
 const itemsElements = elements.querySelector('.elements__items');
 
-//Подскажите пожалуйста, "сгруппировать объявления переменных, объявления функций, вызовы функций." - это нужно сделать во всем коде? или внутри функций? переменные я объявил вначале кода, потом идут функции, потом обработчики. подскажите пожалуйста, как правильно сделать
 function createCard(card){
   const cardElements = cardTemplate.cloneNode(true);
   const imgCard =  cardElements.querySelector('.elements__img');
