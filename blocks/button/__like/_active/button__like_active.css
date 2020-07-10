@@ -1,3 +1,4 @@
 .button__like_active {
 	background: url(../../../../images/button__like_active.svg) center no-repeat;
+	background-size: contain;
 }
