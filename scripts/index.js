@@ -141,7 +141,7 @@ function cardFormSubmitHandler(evt) {
 
 //функция закрытия popup по клику на overlay
 function closePopupByClickingOverlay() {
-  const popupList = document.querySelectorAll('.popup');
+  const popupList = Array.from(document.querySelectorAll('.popup'));
   popupList.forEach((popupElement) => {
     popupElement.addEventListener('mousedown', evt => {
       if(evt.target !== evt.currentTarget) {
@@ -155,14 +155,10 @@ closePopupByClickingOverlay()
 
 //закрытия popup по нажатию на esc
   function closePopupByKeydownEsc(evt) {
-    if(popupEditProfile.classList.contains('.popup_opened') && evt.key === 'Escape') {
-      closePopup(popupEditProfile)
-    } else if(popupAddCard.classList.contains('.popup_opened') && evt.key === 'Escape') {
-      closePopup(popupAddCard)
-    }else if(popupImg.classList.contains('.popup_opened') && evt.key === 'Escape') {
-      closePopup(popupImg)
+      if (evt.key === 'Escape' && document.querySelector('.popup_opened')) {
+        closePopup(popupEditProfile)
+      }
     }
-  }
 
 
 profileEdit.addEventListener('click', popupEditProfileShow);
@@ -174,4 +170,3 @@ formProfile.addEventListener('submit', profileFormSubmitHandler);
 formCard.addEventListener('submit', cardFormSubmitHandler);
 
 document.addEventListener('keydown', closePopupByKeydownEsc);
-
