@@ -33,12 +33,12 @@ const config = {
   formSelector: '.popup__content',
   inputSelector: '.popup__input',
   submitButtonSelector: '.button_submit',
-  inactiveButtonClass: 'button_disabled',
+  inactiveButtonClass: '.button_disabled',
   inputErrorClass: '.popup__input_type_error',
   errorSelector: '.popup__error',
-  errorClass: 'popup__error_visible',
+  errorClass: '.popup__error_visible',
+  popupFieldSelector: '.popup__field',
 };
-
 
 enableValidation(config);
 
@@ -92,7 +92,6 @@ function openPopup(popup,formElement, inputElement) {
   hideInputError(formElement, inputElement)
 }
 
-console.log(popupEditProfile.querySelector(config.formSelector))
 //функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -156,7 +155,6 @@ closePopupByClickingOverlay()
 
 //закрытия popup по нажатию на esc
   function closePopupByKeydownEsc(evt) {
-  console.log(evt.key)
     if(popupEditProfile.classList.contains('.popup_opened') && evt.key === 'Escape') {
       closePopup(popupEditProfile)
     } else if(popupAddCard.classList.contains('.popup_opened') && evt.key === 'Escape') {
@@ -175,4 +173,5 @@ popupCloseForImg.addEventListener('click', () => closePopup(popupImg));
 formProfile.addEventListener('submit', profileFormSubmitHandler);
 formCard.addEventListener('submit', cardFormSubmitHandler);
 
+document.addEventListener('keydown', closePopupByKeydownEsc);
 

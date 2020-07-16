@@ -2,17 +2,17 @@
 //   formSelector: '.popup__content',
 //   inputSelector: '.popup__input',
 //   submitButtonSelector: '.button_submit',
-//   inactiveButtonClass: 'popup__button_disabled',
-//   inputErrorClass: 'popup__input_type_error',
+//   inactiveButtonClass: '.button_disabled',
+//   inputErrorClass: '.popup__input_type_error',
 //   errorSelector: '.popup__error',
-//   errorClass: 'popup__error_visible',
+//   errorClass: '.popup__error_visible',
+//   popupFieldSelector: '.popup__field'
 // };
 
-const formElement = document.querySelector('.popup__content');
 
 //this function shows an error
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = inputElement.closest('.popup__field').querySelector(config.errorSelector);
+  const errorElement = inputElement.closest(config.popupFieldSelector).querySelector(config.errorSelector);
 
   inputElement.classList.add(config.inputErrorClass);
   errorElement.classList.add(config.errorClass);
@@ -21,7 +21,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 
 //this function hides an error
 const hideInputError = (formElement, inputElement) => {
-  const errorElement = inputElement.closest('.popup__field').querySelector(config.errorSelector);
+  const errorElement = inputElement.closest(config.popupFieldSelector).querySelector(config.errorSelector);
 
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.classList.remove(config.errorClass);
