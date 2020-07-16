@@ -7,14 +7,8 @@
   color: #000;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  margin-bottom: 29px;
+  margin-bottom: 5px;
   padding: 0 0 13px;
   box-sizing: border-box;
-  outline: none; 
+  outline: none;
 }
-
-.popup__input:last-of-type {
-  margin: 0;
-}
-
-

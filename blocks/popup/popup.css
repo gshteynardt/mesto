@@ -3,9 +3,14 @@
 @import url(./__title/popup__title.css);
 @import url(./__fields/popup__fields.css);
 @import url(./__input/popup__input.css);
+@import url(./__input/_type/popup__input_type_error.css);
 @import url(./__close/popup__close.css);
 @import url(./__img/popup__img.css);
 @import url(./__caption/popup__caption.css);
+@import url(./__error/popup__error.css);
+@import url(./__error/_visible/popup__error_visible.css);
+@import url(./__field/popup__field.css);
+
 
 .popup {
   font-family: 'Inter', Arial, sans-serif;
