@@ -84,7 +84,7 @@ initialCards.forEach(function (item) {
 //функция открытия popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  commit
+
   document.addEventListener('keydown', closePopupByKeydownEsc)
 }
 
