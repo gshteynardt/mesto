@@ -8,7 +8,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   errorElement.textContent = errorMessage;
 }
 
-//фуекция удаления ошибок в форме
+//функция удаления ошибок в форме
 const hideInputError = (formElement, inputElement) => {
   const errorElement = inputElement.closest(config.popupFieldSelector).querySelector(config.errorSelector);
 
@@ -33,16 +33,27 @@ const hasInvalidInput = (inputList) => {
   });
 }
 
+//функция включения состояния disabled для кнопки button_submit
+const onDisabledSubmit = (buttonElement) => {
+  buttonElement.classList.add('button_disabled');
+  buttonElement.setAttribute('disabled', true);
+}
+
+////функция выключения состояния disabled для кнопки button_submit
+const offDisabledSubmit = (buttonElement) => {
+  buttonElement.classList.remove('button_disabled');
+  buttonElement.removeAttribute('disabled');
+}
+
 //функция переключающая состояние кнопки button_submit
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('button_disabled');
-    buttonElement.setAttribute('disabled', true);
+    onDisabledSubmit(buttonElement);
   } else {
-    buttonElement.classList.remove('button_disabled');
-    buttonElement.removeAttribute('disabled');
+    offDisabledSubmit(buttonElement);
   }
 };
+
 
 //устанавливаем обработчик событий на каждый input
 const setEventListeners = (formElement) => {
