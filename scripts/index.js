@@ -128,8 +128,12 @@ function popupEditProfileShow(popup, formElement, inputElement) {
   resetErrorElement(popupEditProfile, config)
 }
 
-//функция очистки полей при открытиие формы добавления карточки
-function resetCardForm() {
+//функция очистки полей и переключение кнопки submit в состояние "неактивна"
+//при открытиие формы добавления карточки
+function resetCardForm(popup, formElement, buttonElement) {
+  buttonElement.classList.add('button_disabled');
+  buttonElement.setAttribute('disabled', true);
+
   placeInput.value = '';
   linkInput.value = '';
 }
@@ -137,8 +141,12 @@ function resetCardForm() {
 //открытие popup addCard
 function popupAddCardShow() {
   openPopup(popupAddCard);
-  resetCardForm();
-  resetErrorElement(popupAddCard, config)
+  resetErrorElement(popupAddCard, config);
+
+  const formElement = popupAddCard.querySelector(config.formSelector);
+  const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
+
+  resetCardForm(popupAddCard, formElement, buttonSubmit);
 }
 
 //обработчик profile form
