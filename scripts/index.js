@@ -56,11 +56,6 @@ function popupAddCardShow() {
   openPopup(popupAddCard);
   resetCardForm();
   cardFormValidator.resetErrorElement();
-
-  const formElement = popupAddCard.querySelector(config.formSelector);
-  const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
-
-  onDisabledSubmit(buttonSubmit);
 }
 
 //обработчик profile form
