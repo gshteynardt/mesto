@@ -1,6 +1,6 @@
-import {config} from "./utils.js";
+import { config } from "../utils/constants.js";
 
-export class FormValidator {
+export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
@@ -94,13 +94,4 @@ export class FormValidator {
   }
 }
 
-
-const formProfile = document.querySelector('.popup__content_theme_profile');
-const formCard = document.querySelector('.popup__content_theme_elements');
-
-export const profileFormValidator = new FormValidator(config, formProfile);
-profileFormValidator.enableValidation(config);
-
-export const cardFormValidator = new FormValidator(config, formCard);
-cardFormValidator.enableValidation(config);
 

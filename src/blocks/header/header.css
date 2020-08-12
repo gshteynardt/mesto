@@ -1,4 +1,4 @@
-@import url(./__logo/header__logo.css);
+@import url(__logo/header__logo.css);
 
 .header {
   font-family: 'Inter', Arial, sans-serif;

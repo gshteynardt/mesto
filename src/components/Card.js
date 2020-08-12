@@ -1,4 +1,5 @@
-import {openPopup, closePopup, popupCloseForImg, captionPopup, imgPopup, popupImg} from "./utils.js";
+import {imgPopup, popupCloseForImg, popupImg,captionPopup } from "../utils/constants.js";
+import { closePopup, openPopup } from "../utils/utils.js";
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -10,18 +11,17 @@ export default class Card {
 
   //метод получения clone template
   _getTemplate() {
-    const cardElement = document
+    return document
       .querySelector(this._cardSelector)
       .content
       .querySelector('.elements__item')
       .cloneNode(true);
-
-    return cardElement;
   }
 
   //метод удаление карточки
   _removeCard() {
     this._element.remove();
+    this._element = null;
   }
 
   //метод измения статуса кнопки like

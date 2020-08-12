@@ -1,4 +1,4 @@
-@import url(./__copy/footer__copy.css);
+@import url(__copy/footer__copy.css);
 
 .footer {
   font-family: 'Inter', Arial, sans-serif;

@@ -36,46 +36,31 @@ export const config = {
   popupFieldSelector: '.popup__field',
 };
 
+export const containerCardSelector = '.elements__items';
+
 export const popupImg = document.querySelector('.popup_theme_image');
 export const imgPopup = popupImg.querySelector('.popup__img');
 export const captionPopup = popupImg.querySelector('.popup__caption');
 export const popupCloseForImg = popupImg.querySelector('.popup__close');
 
-//закрытия popup по нажатию на esc
-export function handleEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened')
-  if (evt.key === 'Escape') {
-    if (popupOpened) {
-      closePopup(popupOpened)
-    }
-  }
-}
 
-//функция открытия popup
-export function openPopup(popup) {
-  popup.classList.add('popup_opened');
-
-  document.addEventListener('keydown', handleEsc);
-}
-
-//функция закрытия popup
-export function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-
-  document.removeEventListener('keydown', handleEsc);
-}
-
-//функция закрытия popup по клику на overlay
-function closePopupByClickingOverlay() {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
-  popupList.forEach((popupElement) => {
-    popupElement.addEventListener('mousedown', evt => {
-      if(evt.target !== evt.currentTarget) {
-        return
-      }
-      closePopup(popupElement)
-    });
-  });
-}
-closePopupByClickingOverlay();
-
+//this variables for profile block
+export const profileName = document.querySelector('.profile__name');
+export const profileJob = document.querySelector('.profile__job');
+export const btnEditProfile = document.querySelector('.button_edit');
+export const btnAddCard = document.querySelector('.button_add');
+//this variables for popup_theme_profile
+export const popupEditProfile = document.querySelector('.popup_theme_profile');
+export const formProfile = document.querySelector('.popup__content_theme_profile');
+export const btnCloseForPopupProfile = popupEditProfile.querySelector('.popup__close');
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const jobInput = document.querySelector('.popup__input_type_job');
+//this variables for popup_theme_elements
+export const popupAddCard = document.querySelector('.popup_theme_elements');
+export const formCard = popupAddCard.querySelector('.popup__content_theme_elements');
+export const placeInput = popupAddCard.querySelector('.popup__input_type_place');
+export const linkInput = popupAddCard.querySelector('.popup__input_type_link');
+export const btnCloseForPopupCard = popupAddCard.querySelector('.popup__close');
+//this variables for elements
+export const elements = document.querySelector('.elements');
+export const elementsContainer = elements.querySelector('.elements__items');
