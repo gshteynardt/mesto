@@ -2,8 +2,9 @@
 import Card from '../components/Card.js';
 import  Section  from "../components/Section.js";
 import  FormValidator  from "../components/FormValidator.js";
-import Popup from '../components/Popup.js';
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import { setValueInputPopupProfile } from "../utils/utils.js";
 
 import {
   config,
@@ -15,6 +16,8 @@ import {
   formCard,
   btnEditProfile,
   btnAddCard,
+  profileNameSelector,
+  profileJobSelector,
 
 } from "../utils/constants.js";
 
@@ -38,11 +41,13 @@ const initialArray = new Section({
 );
 initialArray.renderItems();
 
+export const userInfo = new UserInfo(profileNameSelector, profileJobSelector);
+
+
 //экземпляр popup добавлени я новых карточек
 const popupFormAddCard = new PopupWithForm({
   popupSelector: popupAddCardSelector,
   handleFormSubmit: (item) => {
-    console.log(item)
     const card = new Card({ name: item.place, link: item.url }, '.template-element');
     const cardElement = card.generateCard();
     initialArray.addItem(cardElement);
@@ -53,14 +58,17 @@ popupFormAddCard.setEventListeners();
 //экземпляр popup редактирования профиля
 const popupEditProfile = new PopupWithForm({
   popupSelector: popupProfileSelector,
-  handleFormSubmit: () => {
-
+  handleFormSubmit: (data) => {
+    userInfo.setUserInfo(data);
   }
 });
+popupEditProfile.setEventListeners();
 
 
   btnEditProfile.addEventListener('click', () => {
-
+    popupEditProfile.open();
+    profileFormValidator.resetErrorElement();
+    setValueInputPopupProfile(userInfo.getUserInfo());
   });
 
   btnAddCard.addEventListener('click', () => {

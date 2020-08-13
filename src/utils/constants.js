@@ -44,8 +44,8 @@ export const popupImgSelector = '.popup_theme_image';
 export const popupImg = document.querySelector('.popup_theme_image');
 export const imgPopup = popupImg.querySelector('.popup__img');
 export const captionPopup = popupImg.querySelector('.popup__caption');
-
-
+export const profileNameSelector = '.profile__name';
+export const profileJobSelector = '.profile__job';
 
 //this variables for profile block
 export const profileName = document.querySelector('.profile__name');
