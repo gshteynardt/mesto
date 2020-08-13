@@ -37,14 +37,14 @@ export const config = {
 };
 
 export const containerCardSelector = '.elements__items';
-const popup = document.querySelector('.popup');
 export const popupProfileSelector = '.popup_theme_profile';
 export const popupAddCardSelector = '.popup_theme_elements';
+export const popupImgSelector = '.popup_theme_image';
 
 export const popupImg = document.querySelector('.popup_theme_image');
 export const imgPopup = popupImg.querySelector('.popup__img');
 export const captionPopup = popupImg.querySelector('.popup__caption');
-export const popupCloseForImg = popupImg.querySelector('.popup__close');
+
 
 
 //this variables for profile block
@@ -64,6 +64,3 @@ export const formCard = popupAddCard.querySelector('.popup__content_theme_elemen
 export const placeInput = popupAddCard.querySelector('.popup__input_type_place');
 export const linkInput = popupAddCard.querySelector('.popup__input_type_link');
 export const btnCloseForPopupCard = popupAddCard.querySelector('.popup__close');
-//this variables for elements
-export const elements = document.querySelector('.elements');
-export const elementsContainer = elements.querySelector('.elements__items');

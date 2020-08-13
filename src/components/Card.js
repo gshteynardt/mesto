@@ -1,5 +1,5 @@
-import {imgPopup, popupCloseForImg, popupImg,captionPopup } from "../utils/constants.js";
-import { closePopup, openPopup } from "../utils/utils.js";
+import PopupWithImage from './PopupWithImage.js'
+import { popupImgSelector } from '../utils/constants.js'
 
 export default class Card {
   constructor(data, cardSelector) {
@@ -29,12 +29,12 @@ export default class Card {
     this._element.querySelector('.button__like').classList.toggle('button__like_active');
   }
 
-  _handleOpenPopup(){
-    imgPopup.src = this._link;
-    imgPopup.alt = this._name;
-    captionPopup.textContent = this._name;
-    openPopup(popupImg);
+  _handleCardClick(evt){
+    const popupImg = new PopupWithImage(popupImgSelector);
+    popupImg.open(evt);
+    popupImg.setEventListeners();
   }
+
   //метод добавления слушателя
   _setEventListener(){
     //вешаем обработчик на кнопку delete
@@ -48,14 +48,10 @@ export default class Card {
     });
 
     //вешаем обработчик саму картинку
-    this._element.querySelector('.elements__img').addEventListener('click', () => {
-      this._handleOpenPopup();
+    this._element.querySelector('.elements__img').addEventListener('click', (evt) => {
+      this._handleCardClick(evt);
     });
 
-    //вешаем обработчик на кнопку popup__close
-    popupCloseForImg.addEventListener('click', () => {
-      closePopup(popupImg);
-    });
   }
   //создаем новую карточку и сразу добавляем обработчики
   generateCard() {

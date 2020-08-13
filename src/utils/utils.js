@@ -1,39 +1,47 @@
-
-//закрытия popup по нажатию на esc
-export function handleEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened')
-  if (evt.key === 'Escape') {
-    if (popupOpened) {
-      closePopup(popupOpened)
-    }
-  }
-}
-
-//функция открытия popup
-export function openPopup(popup) {
-  popup.classList.add('popup_opened');
-
-  document.addEventListener('keydown', handleEsc);
-}
-
-//функция закрытия popup
-export function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-
-  document.removeEventListener('keydown', handleEsc);
-}
-
-//функция закрытия popup по клику на overlay
-function closePopupByClickingOverlay() {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
-  popupList.forEach((popupElement) => {
-    popupElement.addEventListener('mousedown', evt => {
-      if(evt.target !== evt.currentTarget) {
-        return
-      }
-      closePopup(popupElement)
-    });
-  });
-}
-closePopupByClickingOverlay();
+// //открытие popup profile
+// function popupEditProfileShow(popup, formElement, inputElement) {
+//   profileFormValidator.resetErrorElement()
+//   nameInput.value = profileName.textContent;
+//   jobInput.value = profileJob.textContent;
+//   profileFormValidator.resetErrorElement()
+//   openPopup(popupEditProfile, formElement, inputElement);
+// }
+//
+// //функция очистки полей в popupCard
+// function resetCardForm() {
+//   placeInput.value = '';
+//   linkInput.value = '';
+// }
+//
+// //открытие popup addCard
+// function popupAddCardShow() {
+//   openPopup(popupAddCard);
+//   resetCardForm();
+//   cardFormValidator.resetErrorElement();
+// }
+//
+// //обработчик profile form
+// function profileFormSubmitHandler(evt) {
+//   evt.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileJob.textContent = jobInput.value;
+//   closePopup(popupEditProfile)
+// }
+//
+// //обработчик card form
+// function cardFormSubmitHandler(evt) {
+//   evt.preventDefault();
+//   const name = placeInput.value;
+//   const link = linkInput.value;
+//   const cardItem = {
+//     name,
+//     link,
+//   }
+//   const card = new Card(cardItem, '.template-element');
+//   const cardElement = card.generateCard()
+//   addCard(cardElement, elementsContainer);
+//   closePopup(popupAddCard);
+//   formCard.reset();
+// }
+//
 
