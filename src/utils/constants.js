@@ -40,27 +40,22 @@ export const containerCardSelector = '.elements__items';
 export const popupProfileSelector = '.popup_theme_profile';
 export const popupAddCardSelector = '.popup_theme_elements';
 export const popupImgSelector = '.popup_theme_image';
+export const profileNameSelector = '.profile__name';
+export const profileJobSelector = '.profile__job';
 
 export const popupImg = document.querySelector('.popup_theme_image');
 export const imgPopup = popupImg.querySelector('.popup__img');
 export const captionPopup = popupImg.querySelector('.popup__caption');
-export const profileNameSelector = '.profile__name';
-export const profileJobSelector = '.profile__job';
 
-//this variables for profile block
-export const profileName = document.querySelector('.profile__name');
-export const profileJob = document.querySelector('.profile__job');
 export const btnEditProfile = document.querySelector('.button_edit');
 export const btnAddCard = document.querySelector('.button_add');
-//this variables for popup_theme_profile
 
 export const formProfile = document.querySelector('.popup__content_theme_profile');
-
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_job');
-//this variables for popup_theme_elements
+
 export const popupAddCard = document.querySelector('.popup_theme_elements');
 export const formCard = popupAddCard.querySelector('.popup__content_theme_elements');
-export const placeInput = popupAddCard.querySelector('.popup__input_type_place');
-export const linkInput = popupAddCard.querySelector('.popup__input_type_link');
-export const btnCloseForPopupCard = popupAddCard.querySelector('.popup__close');
+
+
+
