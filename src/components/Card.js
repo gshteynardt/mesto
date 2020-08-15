@@ -1,11 +1,8 @@
-import PopupWithImage from './PopupWithImage.js'
-import { popupImgSelector } from '../utils/constants.js'
 
 export default class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._alt = data.name;
-    this._link = data.link;
+  constructor({data, handleCardClick}, cardSelector) {
+    this._cardData = data;
+    this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -29,12 +26,6 @@ export default class Card {
     this._element.querySelector('.button__like').classList.toggle('button__like_active');
   }
 
-  _handleCardClick(evt){
-    const popupImg = new PopupWithImage(popupImgSelector);
-    popupImg.open(evt);
-    popupImg.setEventListeners();
-  }
-
   //метод добавления слушателя
   _setEventListener(){
     //вешаем обработчик на кнопку delete
@@ -56,11 +47,14 @@ export default class Card {
   //создаем новую карточку и сразу добавляем обработчики
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListener();
+    this._img = this._element.querySelector('.elements__img');
+    this._title = this._element.querySelector('.elements__title');
 
-    this._element.querySelector('.elements__title').textContent = this._name;
-    this._element.querySelector('.elements__img').alt = this._alt;
-    this._element.querySelector('.elements__img').src = this._link;
+    this._img.alt = this._cardData.alt;
+    this._img.src = this._cardData.link;
+    this._title.textContent = this._cardData.name;
+
+    this._setEventListener();
 
     return this._element;
   }
