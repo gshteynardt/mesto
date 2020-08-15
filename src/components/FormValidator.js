@@ -6,29 +6,29 @@ export default class FormValidator {
     this._formElement = formElement;
   }
 
-  _showInputError(inputElement, errorMessage) {
+  _showInputError(inputElement, errorMessage, inputErrorClass, inputVisibleClass) {
     const errorElement = inputElement.closest(this._config.popupFieldSelector).querySelector(this._config.errorSelector);
 
-    inputElement.classList.add('popup__input_type_error');
-    errorElement.classList.add('popup__error_visible');
+    inputElement.classList.add(inputErrorClass);
+    errorElement.classList.add(inputVisibleClass);
     errorElement.textContent = errorMessage;
   }
 
   //функция удаления ошибок в форме
-  _hideInputError(inputElement) {
+  _hideInputError(inputElement, inputErrorClass, inputVisibleClass) {
     const errorElement = inputElement.closest(this._config.popupFieldSelector).querySelector(this._config.errorSelector);
 
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__error_visible');
+    inputElement.classList.remove(inputErrorClass);
+    errorElement.classList.remove(inputVisibleClass);
     errorElement.textContent = '';
   }
 
   //функция проверяющая валидность поля для отображения/скрытия ошибок
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement, inputElement.validationMessage)
+      this._showInputError(inputElement, inputElement.validationMessage, this._config.inputErrorClass, this._config.inputErrorVisibleClass)
     } else {
-      this._hideInputError(inputElement)
+      this._hideInputError(inputElement, this._config.inputErrorClass, this._config.inputErrorVisibleClass)
     }
   }
 
@@ -40,26 +40,25 @@ export default class FormValidator {
   }
 
 //функция включения состояния disabled для кнопки button_submit
-  _onDisabledSubmit(buttonElement) {
-    buttonElement.classList.add('button_disabled');
+  _onDisabledSubmit(buttonElement, buttonDisabledClass) {
+    buttonElement.classList.add(buttonDisabledClass);
     buttonElement.setAttribute('disabled', true);
   }
 
 //функция выключения состояния disabled для кнопки button_submit
-  _offDisabledSubmit(buttonElement) {
-    buttonElement.classList.remove('button_disabled');
+  _offDisabledSubmit(buttonElement, buttonDisabledClass) {
+    buttonElement.classList.remove(buttonDisabledClass);
     buttonElement.removeAttribute('disabled');
   }
 
 //функция переключающая состояние кнопки button_submit
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
-      this._onDisabledSubmit(buttonElement);
+      this._onDisabledSubmit(buttonElement, config.inactiveButtonClass);
     } else {
-      this._offDisabledSubmit(buttonElement);
+      this._offDisabledSubmit(buttonElement, config.inactiveButtonClass);
     }
   };
-
 
 //устанавливаем обработчик событий на каждый input
   _setEventListeners() {
@@ -88,7 +87,7 @@ export default class FormValidator {
     const buttonElement = this._formElement.querySelector(config.submitButtonSelector);
 
     inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
+      this._hideInputError(inputElement, this._config.inputErrorClass, this._config.inputErrorVisibleClass);
       this._toggleButtonState(inputList, buttonElement);
     });
   }

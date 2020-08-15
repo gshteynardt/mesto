@@ -8,6 +8,7 @@ import UserInfo from "../components/UserInfo.js";
 import {setValueInputPopupProfile} from "../utils/utils.js";
 
 import {
+  templateElementSelector,
   btnAddCard,
   btnEditProfile,
   config,
@@ -39,7 +40,7 @@ function createCard(item) {
       popupImg.open(evt);
       popupImg.setEventListeners();
     }
-  }, '.template-element')
+  }, templateElementSelector)
 }
 
 //экземпляр для рендеринга первоначального массива карточек

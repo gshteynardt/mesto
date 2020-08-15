@@ -27,15 +27,16 @@ export const initialCards = [
 
 export const config = {
   formSelector: '.popup__content',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.button_submit',
-  inactiveButtonClass: '.button_disabled',
-  inputErrorClass: '.popup__input_type_error',
-  errorSelector: '.popup__error',
-  errorClass: '.popup__error_visible',
   popupFieldSelector: '.popup__field',
+  inputSelector: '.popup__input',
+  errorSelector: '.popup__error',
+  submitButtonSelector: '.button_submit',
+  inactiveButtonClass: 'button_disabled',
+  inputErrorVisibleClass: 'popup__error_visible',
+  inputErrorClass: 'popup__input_type_error',
 };
 
+export const templateElementSelector = '.template-element';
 export const containerCardSelector = '.elements__items';
 export const popupProfileSelector = '.popup_theme_profile';
 export const popupAddCardSelector = '.popup_theme_elements';
