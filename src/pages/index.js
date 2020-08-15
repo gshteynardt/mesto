@@ -1,25 +1,27 @@
 import './index.css';
 import Card from '../components/Card.js';
-import  Section  from "../components/Section.js";
-import  FormValidator  from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import { setValueInputPopupProfile } from "../utils/utils.js";
+import {setValueInputPopupProfile} from "../utils/utils.js";
 
 import {
-  config,
-  initialCards,
-  containerCardSelector,
-  popupProfileSelector,
-  popupAddCardSelector,
-  formProfile,
-  formCard,
-  btnEditProfile,
   btnAddCard,
-  profileNameSelector,
+  btnEditProfile,
+  config,
+  containerCardSelector,
+  formCard,
+  formProfile,
+  initialCards,
+  popupAddCardSelector,
+  popupImgSelector,
+  popupProfileSelector,
   profileJobSelector,
-
+  profileNameSelector,
 } from "../utils/constants.js";
+
 
 const profileFormValidator = new FormValidator(config, formProfile);
 profileFormValidator.enableValidation(config);
@@ -27,13 +29,24 @@ profileFormValidator.enableValidation(config);
 const cardFormValidator = new FormValidator(config, formCard);
 cardFormValidator.enableValidation(config);
 
+const popupImg = new PopupWithImage(popupImgSelector);
+
+//функция создания карточки
+function createCard(item) {
+  return new Card({
+    data: item,
+    handleCardClick: (evt) => {
+      popupImg.open(evt);
+      popupImg.setEventListeners();
+    }
+  }, '.template-element')
+}
+
 //экземпляр для рендеринга первоначального массива карточек
 const initialArray = new Section({
   items: initialCards,
-
   renderer: (item) => {
-    const card = new Card(item, '.template-element');
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item).generateCard();
     initialArray.addItem(cardElement);
   }
 },
@@ -43,13 +56,11 @@ initialArray.renderItems();
 
 export const userInfo = new UserInfo(profileNameSelector, profileJobSelector);
 
-
 //экземпляр popup добавлени я новых карточек
 const popupFormAddCard = new PopupWithForm({
   popupSelector: popupAddCardSelector,
   handleFormSubmit: (item) => {
-    const card = new Card({ name: item.place, link: item.url }, '.template-element');
-    const cardElement = card.generateCard();
+    const cardElement = createCard({ name: item.place, link: item.url }).generateCard();
     initialArray.addItem(cardElement);
   }
 });
