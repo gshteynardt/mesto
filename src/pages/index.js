@@ -5,16 +5,12 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import {setValueInputPopupProfile} from "../utils/utils.js";
+
 
 import {
   templateElementSelector,
-  btnAddCard,
-  btnEditProfile,
   config,
   containerCardSelector,
-  formCard,
-  formProfile,
   initialCards,
   popupAddCardSelector,
   popupImgSelector,
@@ -24,21 +20,28 @@ import {
 } from "../utils/constants.js";
 
 
+export const btnEditProfile = document.querySelector('.button_edit');
+export const btnAddCard = document.querySelector('.button_add');
+export const formProfile = document.querySelector('.popup__content_theme_profile');
+export const formCard = document.querySelector('.popup__content_theme_elements');
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const jobInput = document.querySelector('.popup__input_type_job');
+
 const profileFormValidator = new FormValidator(config, formProfile);
 profileFormValidator.enableValidation(config);
 
 const cardFormValidator = new FormValidator(config, formCard);
 cardFormValidator.enableValidation(config);
 
-const popupImg = new PopupWithImage(popupImgSelector);
+const popupWithImg = new PopupWithImage(popupImgSelector);
 
 //функция создания карточки
 function createCard(item) {
   return new Card({
     data: item,
     handleCardClick: (evt) => {
-      popupImg.open(evt);
-      popupImg.setEventListeners();
+      popupWithImg.open(evt);
+      popupWithImg.setEventListeners();
     }
   }, templateElementSelector)
 }
@@ -66,6 +69,12 @@ const popupFormAddCard = new PopupWithForm({
   }
 });
 popupFormAddCard.setEventListeners();
+
+//при открытие popup profile устанавливаем первоначальные значения инпутам
+export function setValueInputPopupProfile(data) {
+  nameInput.value = data.name;
+  jobInput.value = data.job;
+}
 
 //экземпляр popup редактирования профиля
 const popupEditProfile = new PopupWithForm({

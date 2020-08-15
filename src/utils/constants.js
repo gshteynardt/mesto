@@ -1,3 +1,5 @@
+import {popupImg} from "../pages";
+
 export const initialCards = [
   {
     name: 'Архыз',
@@ -43,20 +45,5 @@ export const popupAddCardSelector = '.popup_theme_elements';
 export const popupImgSelector = '.popup_theme_image';
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
-
-export const popupImg = document.querySelector('.popup_theme_image');
-export const imgPopup = popupImg.querySelector('.popup__img');
-export const captionPopup = popupImg.querySelector('.popup__caption');
-
-export const btnEditProfile = document.querySelector('.button_edit');
-export const btnAddCard = document.querySelector('.button_add');
-
-export const formProfile = document.querySelector('.popup__content_theme_profile');
-export const nameInput = document.querySelector('.popup__input_type_name');
-export const jobInput = document.querySelector('.popup__input_type_job');
-
-export const popupAddCard = document.querySelector('.popup_theme_elements');
-export const formCard = popupAddCard.querySelector('.popup__content_theme_elements');
-
-
-
+export const imgPopupSelector = '.popup__img';
+export const captionImgPopupSelector = '.popup__caption';
