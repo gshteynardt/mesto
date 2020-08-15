@@ -86,15 +86,13 @@ const popupEditProfile = new PopupWithForm({
 popupEditProfile.setEventListeners();
 
 
-  btnEditProfile.addEventListener('click', () => {
-    popupEditProfile.open();
-    profileFormValidator.resetErrorElement();
-    setValueInputPopupProfile(userInfo.getUserInfo());
+btnEditProfile.addEventListener('click', () => {
+  popupEditProfile.open();
+  profileFormValidator.resetErrorElement();
+  setValueInputPopupProfile(userInfo.getUserInfo());
   });
 
-  btnAddCard.addEventListener('click', () => {
-    popupFormAddCard.open();
-    cardFormValidator.resetErrorElement();
+btnAddCard.addEventListener('click', () => {
+  popupFormAddCard.open();
+  cardFormValidator.resetErrorElement();
 });
-
-
