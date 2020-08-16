@@ -39,11 +39,9 @@ export default class Card {
     });
 
     //вешаем обработчик саму картинку
-    this._element.querySelector('.elements__img').addEventListener('click', (evt) => {
-      this._handleCardClick(evt);
-    });
-
+    this._element.querySelector('.elements__img').addEventListener('click', () => this._handleCardClick(this._cardData));
   }
+
   //создаем новую карточку и сразу добавляем обработчики
   generateCard() {
     this._element = this._getTemplate();

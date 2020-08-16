@@ -39,8 +39,8 @@ const popupWithImg = new PopupWithImage(popupImgSelector);
 function createCard(item) {
   return new Card({
     data: item,
-    handleCardClick: (evt) => {
-      popupWithImg.open(evt);
+    handleCardClick: (item) => {
+      popupWithImg.open(item);
       popupWithImg.setEventListeners();
     }
   }, templateElementSelector)
