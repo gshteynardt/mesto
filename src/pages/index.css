@@ -11,6 +11,7 @@
 @import url(../blocks/button/_edit/button_edit.css);
 @import url(../blocks/button/_add/button_add.css);
 @import url(../blocks/button/_submit/button_submit.css);
+@import url(../blocks/button/_submit/_theme/button_submit_theme_card-delete.css);
 @import url(../blocks/button/_delete/button_delete.css);
 @import url(../blocks/button/_disabled/button_disabled.css);
 @import url(../blocks/popup/popup.css);

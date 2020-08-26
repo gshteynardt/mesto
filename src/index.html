@@ -75,12 +75,14 @@
         <div class="popup__fields">
   
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_type_place" name="place" value="" placeholder="Название" minlength="1" maxlength="30" required>
+            <input type="text" class="popup__input popup__input_type_place" name="name" value="" placeholder="Название"
+                   minlength="1" maxlength="30" required>
             <span class="popup__error"></span>
           </label>
           
           <label class="popup__field">
-            <input type="url" class="popup__input popup__input_type_link" name="url" value="" placeholder="Ссылка на картинку" required>
+            <input type="url" class="popup__input popup__input_type_link" name="link" value=""
+                   placeholder="Ссылка на картинку" required>
             <span class="popup__error"></span>
           </label>
           
@@ -100,6 +102,19 @@
       <p class="popup__caption"></p>
     </div>
   </section>
+  <!--blocks popup_theme_card-delete starts here-->
+  <section class="popup popup_theme_card-delete">
+    <div class="popup__container">
+      <form class="popup__content popup__content_card-delete" novalidate>
+        <h2 class="popup__title popup__title_theme_card-delete">Вы уверены?</h2>
+        <button type="button" class="button popup__close">
+        </button>
+        <button type="submit" class="button button_submit button_submit_theme_card-delete">
+            Да
+        </button>
+      </form>
+    </div>
+  </section>
   <!--block template starts here-->
   <template class="template-element">
     <li class="elements__item">
@@ -109,7 +124,10 @@
       <img src="#" alt="изображение места" class="elements__img">
       <div class="elements__wrap">
         <h2 class="elements__title"></h2>
-        <button type="button" class="button button__like"></button>
+        <div class="elements__container">
+          <button type="button" class="button button__like"></button>
+          <h3 class="elements__likes"></h3>
+        </div>
       </div>
     </li>
   </template>
