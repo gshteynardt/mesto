@@ -7,6 +7,7 @@ export default class UserInfo {
     this._jobElement = document.querySelector(this._jobElementSelector);
   }
 
+
   getUserInfo() {
     return {
       name: this._nameElement.textContent,

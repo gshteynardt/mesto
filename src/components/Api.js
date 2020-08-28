@@ -30,6 +30,10 @@ export default class Api {
       });
   }
 
+  gitAppInfo() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  }
+
   createCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
@@ -49,7 +53,7 @@ export default class Api {
   }
 
   deleteCard(CardId) {
-    return fetch(`${this._baseUrl}/cards/CardId`, {
+    return fetch(`${this._baseUrl}/cards/${CardId}`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -62,13 +66,13 @@ export default class Api {
       });
   }
 
-  editUserInfo() {
+  editUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name,
-        about
+        name: data.name,
+        about: data.about
       })
     })
       .then(res => {
@@ -80,8 +84,19 @@ export default class Api {
       });
   }
 
-  replaceUserPicture() {
+  replaceUserPicture(avatar) {
+    return fetch(`${this._baseUrl}/users/me/${avatar}`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({ avatar })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
 
+        return Promise.reject(`Ошибка: ${res.status}`)
+      });
   }
 
   addLikeCard(cardID) {

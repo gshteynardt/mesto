@@ -16,6 +16,7 @@ export const popupProfileSelector = '.popup_theme_profile';
 export const popupAddCardSelector = '.popup_theme_elements';
 export const popupImgSelector = '.popup_theme_image';
 export const popupDeleteCardSelector = '.popup_theme_card-delete';
+export const popupReplaceAvatarSelector = '.popup_theme_avatar';
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
 export const imgPopupSelector = '.popup__img';
