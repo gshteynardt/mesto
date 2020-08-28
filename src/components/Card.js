@@ -1,7 +1,7 @@
 
 export default class Card {
   constructor({ data, currentUserId, handleCardClick, handleLikeClick, handleDeleteIconClick, handleAvatarClick}, cardSelector) {
-    console.log(currentUserId)
+
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;

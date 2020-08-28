@@ -84,8 +84,8 @@ export default class Api {
       });
   }
 
-  replaceUserPicture(avatar) {
-    return fetch(`${this._baseUrl}/users/me/${avatar}`, {
+  changeUserPicture(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({ avatar })
