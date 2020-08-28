@@ -83,7 +83,7 @@ api.gitAppInfo()
     const renderer = (item) => {
       const card = new Card({
         data: item,
-        currentUserID: userId,
+        currentUserId: userId,
         handleCardClick: () => {
           popupWithImg.open(item);
         },
@@ -116,6 +116,7 @@ api.gitAppInfo()
         }
       }, templateElementSelector);
 
+
       cardList.addItem(card.getCard());
     }
 
@@ -134,7 +135,7 @@ api.gitAppInfo()
         loaderForSubmit(true, popupAddCardSelector);
         api.createCard(data)
           .then( data => {
-            cardList.addItem(renderer(data))
+            cardList.addItem(renderer(data));
             popupFormAddCard.close();
             }
           )

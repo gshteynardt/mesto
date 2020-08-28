@@ -9,6 +9,7 @@
 @import url(../blocks/button/__like/button__like.css);
 @import url(../blocks/button/__like/_active/button__like_active.css);
 @import url(../blocks/button/_edit/button_edit.css);
+@import url(../blocks/button/_edit-avatar/button_edit-avatar.css);
 @import url(../blocks/button/_add/button_add.css);
 @import url(../blocks/button/_submit/button_submit.css);
 @import url(../blocks/button/_submit/_theme/button_submit_theme_card-delete.css);
