@@ -110,23 +110,91 @@ api.gitAppInfo()
       containerCardSelector
     );
     cardList.renderItems();
+
+    //экземпляр popup добавления новых карточек
+    const popupFormAddCard = new PopupWithForm({
+      popupSelector: popupAddCardSelector,
+      handleFormSubmit: (data) => {
+        api.createCard(data)
+          .then( data => {
+            cardList.addItem(renderer(data))
+            popupFormAddCard.close();
+            }
+          )
+          .catch(err => console.log(err));
+      }
+    });
+
+
+    //экземпляр popup редактирования профиля
+    const popupEditProfile = new PopupWithForm({
+      popupSelector: popupProfileSelector,
+      handleFormSubmit: (data) => {
+        api.editUserInfo(data)
+          .then(data => {
+            userInfo.setUserInfo(data);
+            popupEditProfile.close();
+          })
+          .catch(err => console.log(err));
+      }
+    });
+
+    //popup изменения avatar
+    const popupChangeAvatar = new PopupWithForm({
+      popupSelector: popupReplaceAvatarSelector,
+      handleFormSubmit: (item) => {
+        api.replaceUserPicture(item.link)
+          .then(() => popupChangeAvatar.close())
+          .catch(err => console.log(err))
+      }
+    });
+
+    return {
+      userInfo,
+      popupFormAddCard,
+      popupEditProfile,
+      popupChangeAvatar,
+    }
+  }).then( res => {
+    const {
+      userInfo,
+      popupFormAddCard,
+      popupEditProfile,
+      popupChangeAvatar,
+    } = res;
+
+    popupFormAddCard.setEventListeners();
+    popupEditProfile.setEventListeners();
+    popupChangeAvatar.setEventListeners();
+
+    return {
+      popupFormAddCard,
+      popupEditProfile,
+      popupChangeAvatar,
+    }
+}).then( res => {
+  const {
+    popupFormAddCard,
+    popupEditProfile,
+    popupChangeAvatar,
+  } = res;
+
+  btnAddCard.addEventListener('click', () => {
+    popupFormAddCard.open();
+    cardFormValidator.resetErrorElement();
   });
 
-//экземпляр popup добавления новых карточек
-const popupFormAddCard = new PopupWithForm({
-  popupSelector: popupAddCardSelector,
-  handleFormSubmit: data => {
-    api.createCard(data)
-      .then( data => {
-          const cardElement = createCard(data).generateCard(data);
-          renderCard(data).addItem(cardElement);
-          popupFormAddCard.close();
-        }
-      )
-      .catch(err => console.log(err));
-  }
-});
-popupFormAddCard.setEventListeners();
+  btnEditProfile.addEventListener('click', () => {
+    popupEditProfile.open();
+    profileFormValidator.resetErrorElement();
+    setValueInputPopupProfile(userInfo.getUserInfo());
+  });
+
+  avatarUser.addEventListener('click', () => {
+    popupChangeAvatar.open();
+    avatarFormValidator.resetErrorElement();
+  });
+})
 
 //при открытие popup profile устанавливаем первоначальные значения инпутам
 export function setValueInputPopupProfile(data) {
@@ -134,43 +202,3 @@ export function setValueInputPopupProfile(data) {
   jobInput.value = data.job;
 }
 
-//экземпляр popup редактирования профиля
-const popupEditProfile = new PopupWithForm({
-  popupSelector: popupProfileSelector,
-  handleFormSubmit: () => {
-    api.editUserInfo(data)
-      .then(data => {
-        userInfo.setUserInfo(data);
-        popupEditProfile.close();
-      })
-      .catch(err => console.log(err));
-  }
-});
-popupEditProfile.setEventListeners();
-
-const popupChangeAvatar = new PopupWithForm({
-  popupSelector: popupReplaceAvatarSelector,
-  handleFormSubmit: (item) => {
-    api.replaceUserPicture(item.link)
-      .then(() => popupChangeAvatar.close())
-      .catch(err => console.log(err))
-  }
-});
-popupChangeAvatar.setEventListeners();
-
-
-btnEditProfile.addEventListener('click', () => {
-  popupEditProfile.open();
-  profileFormValidator.resetErrorElement();
-  setValueInputPopupProfile(userInfo.getUserInfo());
-  });
-
-btnAddCard.addEventListener('click', () => {
-  popupFormAddCard.open();
-  cardFormValidator.resetErrorElement();
-});
-
-avatarUser.addEventListener('click', () => {
-  popupChangeAvatar.open();
-  avatarFormValidator.resetErrorElement();
-})

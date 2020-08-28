@@ -1,7 +1,7 @@
 
 export default class Card {
   constructor({ data, currentUserId, handleCardClick, handleLikeClick, handleDeleteIconClick, handleAvatarClick}, cardSelector) {
-    console.log(data.likes.length)
+    console.log(currentUserId)
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -80,7 +80,7 @@ export default class Card {
     this._img.src = this._link;
     this._title.textContent = this._name;
 
-    this.updateLikes();
+    this.updateLikes(this._likes);
     this._setEventListener();
 
     return this._element;
