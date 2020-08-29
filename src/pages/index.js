@@ -135,7 +135,7 @@ api.gitAppInfo()
         loaderForSubmit(true, popupAddCardSelector);
         api.createCard(data)
           .then( data => {
-            cardList.addItem(renderer(data));
+            renderer(data);
             popupFormAddCard.close();
             }
           )
