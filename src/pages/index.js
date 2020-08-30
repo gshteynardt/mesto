@@ -69,7 +69,7 @@ const api = new Api({
 
 togglePreloader(true, preloaderSelector);
 
-api.gitAppInfo()
+api.getAppInfo()
   .then(data => {
     const [ initialCards, profileData ] = data
     const userInfo = new UserInfo({

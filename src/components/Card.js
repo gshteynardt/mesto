@@ -34,7 +34,7 @@ export default class Card {
 
   //сравниваем наш текущий id и like_id карточки
   isLiked() {
-    return !!this._likes.find(like => like._id === this._userId);
+    return !!this._likes.some(like => like._id === this._userId);
   }
 
   //функция обновления
@@ -67,12 +67,11 @@ export default class Card {
     this._element = this._getTemplate();
     this._img = this._element.querySelector('.elements__img');
     this._title = this._element.querySelector('.elements__title');
+    const btnCardDelete = this._element.querySelector('.button_delete');
 
     if (this._ownerId === this._userId) {
-      const btnCardDelete = this._element.querySelector('.button_delete');
       btnCardDelete.style.display = 'block';
     } else {
-      const btnCardDelete = this._element.querySelector('.button_delete');
       btnCardDelete.style.display = 'none';
     }
 

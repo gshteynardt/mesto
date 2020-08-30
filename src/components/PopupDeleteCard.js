@@ -14,7 +14,6 @@ export default class PopupDeleteCard extends Popup{
       if(this._handleFormSubmit) {
         this._handleFormSubmit();
       }
-      super.close();
     });
   }
 

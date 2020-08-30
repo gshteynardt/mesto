@@ -22,10 +22,10 @@ export default class Popup {
   }
 
   _closePopupByClickingOverlay = (evt) => {
-    if(evt.target !== evt.currentTarget) {
-      return
+    if(evt.target === evt.currentTarget) {
+      this.close();
     }
-    this.close();
+
   }
 
   setEventListeners() {
